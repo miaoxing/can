@@ -1,0 +1,22 @@
+/* 页面访问权限表单控件 */
+.permission-namespace-list + .permission-namespace-list {
+  margin-top: 16px;
+}
+
+.permission-namespace-list li {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.permission-controller {
+  width: 130px;
+  float: left;
+}
+
+.permission-actions {
+  margin-left: 130px;
+}
+
+.permission-action-checkbox + .permission-action-checkbox {
+  margin-left: 0;
+  margin-right: 10px;
+}
