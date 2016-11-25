@@ -19,7 +19,7 @@ class Role extends \miaoxing\plugin\BaseModel
     protected $table = 'roles';
 
     protected $providers = [
-        'db' => 'app.db'
+        'db' => 'app.db',
     ];
 
     /**
@@ -30,6 +30,7 @@ class Role extends \miaoxing\plugin\BaseModel
     public function getRolePermissions()
     {
         $this->rolePermissions || $this->rolePermissions = $this->appDb('rolePermissions')->findAll(['roleId' => $this['id']]);
+
         return $this->rolePermissions;
     }
 
@@ -45,12 +46,12 @@ class Role extends \miaoxing\plugin\BaseModel
     }
 
     /**
-     *
      * @param User $user
      * @param array $roleIds
      * @return array
      */
-    public function assign(User $user, $roleIds) {
+    public function assign(User $user, $roleIds)
+    {
         $data = [];
         foreach ($roleIds as $role) {
             $data[] = ['userId' => $user['id'], 'roleId' => $role, 'appId' => wei()->app->getId()];
@@ -59,6 +60,7 @@ class Role extends \miaoxing\plugin\BaseModel
         $userRoles->saveColl($data);
 
         wei()->can->refreshPermissionIds($user);
+
         return ['code' => 1, 'message' => '操作成功'];
     }
 

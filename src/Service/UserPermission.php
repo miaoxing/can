@@ -7,6 +7,6 @@ class UserPermission extends \miaoxing\plugin\BaseModel
     protected $table = 'userPermissions';
 
     protected $providers = [
-        'db' => 'app.db'
+        'db' => 'app.db',
     ];
 }

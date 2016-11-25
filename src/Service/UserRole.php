@@ -10,10 +10,10 @@ class UserRole extends \miaoxing\plugin\BaseModel
         'createTime',
         'createUser',
         'updateTime',
-        'updateUser'
+        'updateUser',
     ];
 
     protected $providers = [
-        'db' => 'app.db'
+        'db' => 'app.db',
     ];
 }

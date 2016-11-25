@@ -2,10 +2,7 @@
 
 namespace Miaoxing\Can\Service;
 
-use miaoxing\plugin\BaseModel;
 use miaoxing\plugin\services\User;
-use Miaoxing\Can\Service\Role;
-use Miaoxing\Can\Service\UserRole;
 
 class Can extends \miaoxing\plugin\BaseService
 {
@@ -74,6 +71,7 @@ class Can extends \miaoxing\plugin\BaseService
                 return true;
             }
         }
+
         return false;
     }
 
@@ -90,6 +88,7 @@ class Can extends \miaoxing\plugin\BaseService
         if (!$page) {
             return true;
         }
+
         return $this->can($page, $user);
     }
 
@@ -122,6 +121,7 @@ class Can extends \miaoxing\plugin\BaseService
     {
         wei()->tagCache('can')->remove($this->permissionCacheKey . $user['id']);
         $this->getPermissionIds($user);
+
         return $this;
     }
 
@@ -156,9 +156,9 @@ class Can extends \miaoxing\plugin\BaseService
     /**
      * Camelizes a word
      *
-     * @param string $word The word to camelize.
+     * @param string $word The word to camelize
      *
-     * @return string The camelized word.
+     * @return string The camelized word
      */
     protected function camelize($word)
     {
@@ -174,7 +174,7 @@ class Can extends \miaoxing\plugin\BaseService
      */
     public function hasRole($roleId, \miaoxing\plugin\services\User $user)
     {
-        return (bool)wei()->userRole()->curApp()->find(['userId' => $user['id'], 'roleId' => $roleId]);
+        return (bool) wei()->userRole()->curApp()->find(['userId' => $user['id'], 'roleId' => $roleId]);
     }
 
     /**
@@ -186,6 +186,7 @@ class Can extends \miaoxing\plugin\BaseService
     public function getUserRoles(User $user)
     {
         $this->userRoles || $this->userRoles = wei()->userRole()->curApp()->findAll(['userId' => $user['id']]);
+
         return $this->userRoles;
     }
 
@@ -201,10 +202,11 @@ class Can extends \miaoxing\plugin\BaseService
                 ->join('userRoles', 'userRoles.roleId = roles.id')
                 ->andWhere([
                     'roles.appId' => $this->app->getId(),
-                    'userId' => $user['id']
+                    'userId' => $user['id'],
                 ])
                 ->findAll();
         }
+
         return $this->roles[$user['id']];
     }
 }

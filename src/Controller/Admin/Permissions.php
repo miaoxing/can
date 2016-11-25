@@ -8,13 +8,13 @@ class Permissions extends \miaoxing\plugin\BaseController
      * @todo
      */
     protected $guestPages = [
-        'admin/permissions/all'
+        'admin/permissions/all',
     ];
 
     public function indexAction($req)
     {
         switch ($req['_format']) {
-            case 'json' :
+            case 'json':
 
                 $permissions = wei()->permission();
 
@@ -49,7 +49,7 @@ class Permissions extends \miaoxing\plugin\BaseController
 
         return $this->suc([
             'pages' => $actions,
-            'customs' => $customs->toArray(['id', 'name'])
+            'customs' => $customs->toArray(['id', 'name']),
         ]);
     }
 
@@ -66,6 +66,7 @@ class Permissions extends \miaoxing\plugin\BaseController
     public function editAction($req)
     {
         $permission = wei()->permission()->findOrInitById($req['id']);
+
         return get_defined_vars();
     }
 
@@ -75,11 +76,11 @@ class Permissions extends \miaoxing\plugin\BaseController
             'data' => $req,
             'rules' => [
                 'id' => [],
-                'name' => []
+                'name' => [],
             ],
             'names' => [
                 'id' => '编号',
-                'name' => '名称'
+                'name' => '名称',
             ],
         ]);
         if (!$validator->isValid()) {
@@ -96,6 +97,7 @@ class Permissions extends \miaoxing\plugin\BaseController
     {
         $permission = wei()->permission()->findId($req['id']);
         $permission->destroy();
+
         return $this->suc();
     }
 }

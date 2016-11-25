@@ -16,7 +16,7 @@ class Roles extends \miaoxing\plugin\BaseController
     public function indexAction($req)
     {
         switch ($req['_format']) {
-            case 'json' :
+            case 'json':
 
                 $roles = wei()->role()->curApp();
 
@@ -71,7 +71,7 @@ class Roles extends \miaoxing\plugin\BaseController
         if ($req['permissionIds']) {
             $permissions = [];
             $rolePermissions = $role->getRolePermissions();
-            foreach ((array)$req['permissionIds'] as $permissionId) {
+            foreach ((array) $req['permissionIds'] as $permissionId) {
                 foreach (explode(',', $permissionId) as $partId) {
                     $permissions[] = ['roleId' => $role['id'], 'permissionId' => $partId];
                 }
@@ -92,6 +92,7 @@ class Roles extends \miaoxing\plugin\BaseController
         }
 
         $role->destroy();
+
         return $this->suc();
     }
 
@@ -102,9 +103,11 @@ class Roles extends \miaoxing\plugin\BaseController
         if ($this->request->isGet()) {
             $roles = wei()->role()->curApp()->findAll();
             $selectedRoleIds = wei()->can->getUserRoles($user)->getAll('roleId');
+
             return get_defined_vars();
         } else {
-            wei()->role->assign($user, (array)$req['roles']);
+            wei()->role->assign($user, (array) $req['roles']);
+
             return $this->suc();
         }
     }
