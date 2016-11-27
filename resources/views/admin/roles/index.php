@@ -17,7 +17,7 @@
         <thead>
         <tr>
           <th>名称</th>
-          <th style="width: 150px">操作</th>
+          <th class="t-10">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -36,7 +36,8 @@
     <a href="<%= $.url('admin/roles/%s/edit', id) %>" title="编辑">
       <i class="fa fa-edit bigger-130"></i>
     </a>
-    <a class="text-danger delete-record" href="javascript:;" data-href="<%= $.url('admin/roles/%s?_method=DELETE', id) %>" title="删除">
+    <a class="text-danger delete-record" href="javascript:;"
+      data-href="<%= $.url('admin/roles/%s?_method=DELETE', id) %>" title="删除">
       <i class="fa fa-trash-o bigger-130"></i>
     </a>
   </div>

@@ -17,7 +17,6 @@ class Roles extends \miaoxing\plugin\BaseController
     {
         switch ($req['_format']) {
             case 'json':
-
                 $roles = wei()->role()->curApp();
 
                 // 分页

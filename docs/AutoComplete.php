@@ -1,6 +1,7 @@
 <?php
 
 namespace plugins\can\docs {
+
     /**
      * @property    \Miaoxing\Can\Service\Can $can 权限校验服务
      *
@@ -22,6 +23,7 @@ namespace plugins\can\docs {
 }
 
 namespace {
+
     /**
      * @return \plugins\can\docs\AutoComplete
      */

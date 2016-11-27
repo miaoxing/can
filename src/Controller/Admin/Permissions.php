@@ -15,7 +15,6 @@ class Permissions extends \miaoxing\plugin\BaseController
     {
         switch ($req['_format']) {
             case 'json':
-
                 $permissions = wei()->permission();
 
                 // 分页
@@ -87,7 +86,7 @@ class Permissions extends \miaoxing\plugin\BaseController
             return $this->err($validator->getFirstMessage());
         }
 
-        $permission = wei()->permission()->findId($req['id']);
+        $permission = wei()->permission()->findOrInitById($req['id']);
         $permission->save($req);
 
         return $this->suc();
@@ -95,7 +94,7 @@ class Permissions extends \miaoxing\plugin\BaseController
 
     public function destroyAction($req)
     {
-        $permission = wei()->permission()->findId($req['id']);
+        $permission = wei()->permission()->findOneById($req['id']);
         $permission->destroy();
 
         return $this->suc();

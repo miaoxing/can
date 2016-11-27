@@ -29,7 +29,8 @@ class Role extends \miaoxing\plugin\BaseModel
      */
     public function getRolePermissions()
     {
-        $this->rolePermissions || $this->rolePermissions = $this->appDb('rolePermissions')->findAll(['roleId' => $this['id']]);
+        $this->rolePermissions ||
+            $this->rolePermissions = $this->appDb('rolePermissions')->findAll(['roleId' => $this['id']]);
 
         return $this->rolePermissions;
     }

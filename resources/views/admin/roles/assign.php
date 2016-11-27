@@ -64,7 +64,13 @@
 <?= $block('js') ?>
 <script>
   require(['form', 'ueditor', 'jquery-deparam', 'dataTable', 'validator'], function (form) {
-    form.toOptions($('#roles'), <?= json_encode($roles->fetchAll()) ?>, 'id', 'name', <?= json_encode($selectedRoleIds); ?>);
+    form.toOptions(
+      $('#roles'),
+      <?= json_encode($roles->fetchAll()) ?>,
+      'id',
+      'name',
+      <?= json_encode($selectedRoleIds) ?>
+    );
 
     $('#role-form')
       .ajaxForm({
