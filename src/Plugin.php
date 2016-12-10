@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Can;
 
-use miaoxing\plugin\services\User;
+use Miaoxing\Plugin\Service\User;
 use Wei\RetTrait;
 
 class Plugin extends \miaoxing\plugin\BasePlugin
@@ -46,7 +46,7 @@ class Plugin extends \miaoxing\plugin\BasePlugin
      * 检查用户是否有权限访问后台页面
      *
      * @param string $page
-     * @param User $user
+     * @param \Miaoxing\Plugin\Service\User $user
      * @return \Wei\Response
      */
     public function onAdminAuth($page, User $user)

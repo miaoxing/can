@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Can\Service;
 
-use miaoxing\plugin\services\User;
+use Miaoxing\Plugin\Service\User;
 
 class Can extends \miaoxing\plugin\BaseService
 {
@@ -38,7 +38,7 @@ class Can extends \miaoxing\plugin\BaseService
      * 检查用户是否有指定的权限
      *
      * @param string $permissionId
-     * @param User $user
+     * @param \Miaoxing\Plugin\Service\User $user
      * @return bool
      */
     public function can($permissionId, User $user = null)
@@ -79,7 +79,7 @@ class Can extends \miaoxing\plugin\BaseService
      * 检查用户能否访问指定的URL地址
      *
      * @param string $url
-     * @param \miaoxing\plugin\services\User $user
+     * @param \Miaoxing\Plugin\Service\User $user
      * @return bool
      */
     public function accessUrl($url, User $user = null)
@@ -95,7 +95,7 @@ class Can extends \miaoxing\plugin\BaseService
     /**
      * 获取当前用户拥有的权限列表
      *
-     * @param \miaoxing\plugin\services\User $user
+     * @param \Miaoxing\Plugin\Service\User $user
      * @return array
      */
     public function getPermissionIds(User $user)
@@ -169,10 +169,10 @@ class Can extends \miaoxing\plugin\BaseService
      * 检查用户是否存在某角色
      *
      * @param string $roleId
-     * @param User $user
+     * @param \Miaoxing\Plugin\Service\User $user
      * @return bool
      */
-    public function hasRole($roleId, \miaoxing\plugin\services\User $user)
+    public function hasRole($roleId, \Miaoxing\Plugin\Service\User $user)
     {
         return (bool) wei()->userRole()->curApp()->find(['userId' => $user['id'], 'roleId' => $roleId]);
     }
@@ -180,7 +180,7 @@ class Can extends \miaoxing\plugin\BaseService
     /**
      * 获取用户与角色关联表数据
      *
-     * @param \miaoxing\plugin\services\User $user
+     * @param \Miaoxing\Plugin\Service\User $user
      * @return UserRole|UserRole[]
      */
     public function getUserRoles(User $user)

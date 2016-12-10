@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Can\Service;
 
-use miaoxing\plugin\services\User;
+use Miaoxing\Plugin\Service\User;
 
 class Role extends \miaoxing\plugin\BaseModel
 {
@@ -47,7 +47,7 @@ class Role extends \miaoxing\plugin\BaseModel
     }
 
     /**
-     * @param User $user
+     * @param \Miaoxing\Plugin\Service\User $user
      * @param array $roleIds
      * @return array
      */
