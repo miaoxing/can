@@ -51,7 +51,7 @@
             提交
           </button>
           &nbsp; &nbsp; &nbsp;
-          <a class="btn" href="<?= $url('admin/permissions') ?>">
+          <a class="btn btn-default" href="<?= $url('admin/permissions') ?>">
             <i class="fa fa-undo bigger-110"></i>
             返回列表
           </a>

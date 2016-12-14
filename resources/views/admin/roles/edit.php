@@ -43,7 +43,7 @@
             提交
           </button>
           &nbsp; &nbsp; &nbsp;
-          <a class="btn" href="<?= $url('admin/roles') ?>">
+          <a class="btn btn-default" href="<?= $url('admin/roles') ?>">
             <i class="fa fa-undo bigger-110"></i>
             返回列表
           </a>
