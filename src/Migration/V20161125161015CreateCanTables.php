@@ -11,7 +11,7 @@ class V20161125161015CreateCanTables extends BaseMigration
      */
     public function up()
     {
-        $this->scheme->table('permissions')
+        $this->schema->table('permissions')
             ->string('id', 32)
             ->int('appId')
             ->string('name', 32)
@@ -21,7 +21,7 @@ class V20161125161015CreateCanTables extends BaseMigration
             ->primary('id')
             ->exec();
 
-        $this->scheme->table('roles')
+        $this->schema->table('roles')
             ->id()
             ->int('appId')
             ->string('name', 64)
@@ -30,14 +30,14 @@ class V20161125161015CreateCanTables extends BaseMigration
             ->int('updateUser')
             ->exec();
 
-        $this->scheme->table('rolePermissions')
+        $this->schema->table('rolePermissions')
             ->id()
             ->int('roleId')
             ->string('permissionId', 64)
             ->bool('allow')->defaults(1)
             ->exec();
 
-        $this->scheme->table('userPermissions')
+        $this->schema->table('userPermissions')
             ->id()
             ->int('userId')
             ->string('permissionId', 64)
@@ -46,7 +46,7 @@ class V20161125161015CreateCanTables extends BaseMigration
             ->int('updateUser')
             ->exec();
 
-        $this->scheme->table('userRoles')
+        $this->schema->table('userRoles')
             ->id()
             ->int('appId')
             ->int('userId')
@@ -59,10 +59,10 @@ class V20161125161015CreateCanTables extends BaseMigration
      */
     public function down()
     {
-        $this->scheme->dropIfExists('permissions');
-        $this->scheme->dropIfExists('roles');
-        $this->scheme->dropIfExists('rolePermissions');
-        $this->scheme->dropIfExists('userPermissions');
-        $this->scheme->dropIfExists('userRoles');
+        $this->schema->dropIfExists('permissions');
+        $this->schema->dropIfExists('roles');
+        $this->schema->dropIfExists('rolePermissions');
+        $this->schema->dropIfExists('userPermissions');
+        $this->schema->dropIfExists('userRoles');
     }
 }
