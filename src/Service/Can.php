@@ -43,6 +43,10 @@ class Can extends \miaoxing\plugin\BaseService
      */
     public function can($permissionId, User $user = null)
     {
+        if (!$this->plugin->isInstalled('can')) {
+            return true;
+        }
+
         $user || $user = wei()->curUser;
         $permissionIds = $this->getPermissionIds($user);
 
