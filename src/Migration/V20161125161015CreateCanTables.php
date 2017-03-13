@@ -15,7 +15,7 @@ class V20161125161015CreateCanTables extends BaseMigration
             ->string('id', 32)
             ->int('appId')
             ->string('name', 32)
-            ->timestamps()
+            ->timestampsV1()
             ->int('createUser')
             ->int('updateUser')
             ->primary('id')
@@ -25,7 +25,7 @@ class V20161125161015CreateCanTables extends BaseMigration
             ->id()
             ->int('appId')
             ->string('name', 64)
-            ->timestamps()
+            ->timestampsV1()
             ->int('createUser')
             ->int('updateUser')
             ->exec();
@@ -41,7 +41,7 @@ class V20161125161015CreateCanTables extends BaseMigration
             ->id()
             ->int('userId')
             ->string('permissionId', 64)
-            ->timestamps()
+            ->timestampsV1()
             ->int('createUser')
             ->int('updateUser')
             ->exec();
