@@ -44,6 +44,7 @@ class Can extends \miaoxing\plugin\BaseService
     public function can($permissionId, User $user = null)
     {
         if (!$this->plugin->isInstalled('can')) {
+            $this->logger->info('Plugin "can" has not installed');
             return true;
         }
 

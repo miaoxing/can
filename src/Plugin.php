@@ -58,4 +58,16 @@ class Plugin extends \miaoxing\plugin\BasePlugin
             return $this->err('很抱歉,您没有权限访问该页面', -403);
         }
     }
+
+    /**
+     * 捕获用户权限检查功能
+     *
+     * @param string $permissionId
+     * @param User $user
+     * @return bool
+     */
+    public function onUserCan($permissionId, User $user)
+    {
+        return wei()->can->can($permissionId, $user);
+    }
 }
