@@ -66,7 +66,7 @@
   require(['form', 'ueditor', 'jquery-deparam', 'dataTable', 'validator'], function (form) {
     form.toOptions(
       $('#roles'),
-      <?= json_encode($roles->fetchAll()) ?>,
+      <?= json_encode($roles->toArray()) ?>,
       'id',
       'name',
       <?= json_encode($selectedRoleIds) ?>
