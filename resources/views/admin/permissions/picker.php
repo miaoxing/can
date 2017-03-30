@@ -5,7 +5,7 @@
     </label>
 
     <div class="col-lg-8 js-permission-list">
-      <div class="checkbox-inline">
+      <div class="permission-namespace-checkbox checkbox-inline">
         <label>
           <input type="checkbox" class="js-permission-namespace" name="permissionIds[]" value="admin" <%= permissionIds.indexOf('admin') != -1 ? 'checked' : '' %>>
           <strong>全部</strong>
