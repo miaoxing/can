@@ -57,7 +57,7 @@ class Permission extends \miaoxing\plugin\BaseModel
             // 2.2 跳过未配置权限的控制器
             $class = new ReflectionClass($class);
             $defaultProperties = $class->getDefaultProperties();
-            if (!isset($defaultProperties['actionPermissions'])) {
+            if (!($defaultProperties['actionPermissions'])) {
                 continue;
             }
 
