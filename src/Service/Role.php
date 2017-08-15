@@ -57,7 +57,7 @@ class Role extends \miaoxing\plugin\BaseModel
         foreach ($roleIds as $role) {
             $data[] = ['userId' => $user['id'], 'roleId' => $role, 'appId' => wei()->app->getId()];
         }
-        $userRoles = wei()->can->getUserRoles($user);
+        $userRoles = wei()->userRole()->curApp()->findAll(['userId' => $user['id']]);
         $userRoles->saveColl($data);
 
         wei()->can->refreshPermissionIds($user);
