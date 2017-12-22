@@ -49,7 +49,7 @@
             提交
           </button>
           &nbsp; &nbsp; &nbsp;
-          <a class="btn btn-default" href="<?= $url('admin/admin/index') ?>">
+          <a class="btn btn-default" href="<?= $url('admin/admins') ?>">
             <i class="fa fa-undo bigger-110"></i>
             返回
           </a>
