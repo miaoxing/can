@@ -5,7 +5,7 @@ namespace Miaoxing\Can;
 use Miaoxing\Plugin\Service\User;
 use Wei\RetTrait;
 
-class Plugin extends \miaoxing\plugin\BasePlugin
+class Plugin extends \Miaoxing\Plugin\BasePlugin
 {
     use RetTrait;
 
