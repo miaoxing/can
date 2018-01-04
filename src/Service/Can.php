@@ -4,7 +4,7 @@ namespace Miaoxing\Can\Service;
 
 use Miaoxing\Plugin\Service\User;
 
-class Can extends \miaoxing\plugin\BaseService
+class Can extends \Miaoxing\Plugin\BaseService
 {
     /**
      * @var Role[]|Role[][]
