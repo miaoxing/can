@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Can\Service;
 
-class UserRole extends \miaoxing\plugin\BaseModel
+class UserRole extends \Miaoxing\Plugin\BaseModel
 {
     protected $table = 'userRoles';
 

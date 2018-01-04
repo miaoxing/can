@@ -4,7 +4,7 @@ namespace Miaoxing\Can\Service;
 
 use ReflectionClass;
 
-class Permission extends \miaoxing\plugin\BaseModel
+class Permission extends \Miaoxing\Plugin\BaseModel
 {
     protected $namespaces = [
         '' => '前台',

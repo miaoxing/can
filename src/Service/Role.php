@@ -4,10 +4,10 @@ namespace Miaoxing\Can\Service;
 
 use Miaoxing\Plugin\Service\User;
 
-class Role extends \miaoxing\plugin\BaseModel
+class Role extends \Miaoxing\Plugin\BaseModel
 {
     /**
-     * @var \miaoxing\plugin\BaseModel|\miaoxing\plugin\BaseModel[]
+     * @var \Miaoxing\Plugin\BaseModel|\Miaoxing\Plugin\BaseModel[]
      */
     protected $rolePermissions;
 
@@ -25,7 +25,7 @@ class Role extends \miaoxing\plugin\BaseModel
     /**
      * 获取角色与权限关联表数据
      *
-     * @return \miaoxing\plugin\BaseModel|\miaoxing\plugin\BaseModel[]
+     * @return \Miaoxing\Plugin\BaseModel|\Miaoxing\Plugin\BaseModel[]
      */
     public function getRolePermissions()
     {
