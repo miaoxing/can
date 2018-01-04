@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Can\Controller\Admin;
 
-class Permissions extends \miaoxing\plugin\BaseController
+class Permissions extends \Miaoxing\Plugin\BaseController
 {
     /**
      * @todo

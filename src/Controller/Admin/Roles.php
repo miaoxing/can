@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Can\Controller\Admin;
 
-class Roles extends \miaoxing\plugin\BaseController
+class Roles extends \Miaoxing\Plugin\BaseController
 {
     protected $controllerName = '角色管理';
 
