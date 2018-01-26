@@ -2,8 +2,12 @@
 
 namespace Miaoxing\Can\Service;
 
+use Miaoxing\Plugin\Service\Str;
 use Miaoxing\Plugin\Service\User;
 
+/**
+ * @property Str str
+ */
 class Can extends \Miaoxing\Plugin\BaseService
 {
     /**
@@ -156,19 +160,7 @@ class Can extends \Miaoxing\Plugin\BaseService
         }
 
         // 转换为驼峰形式
-        return $this->camelize($path);
-    }
-
-    /**
-     * Camelizes a word
-     *
-     * @param string $word The word to camelize
-     *
-     * @return string The camelized word
-     */
-    protected function camelize($word)
-    {
-        return lcfirst(str_replace(' ', '', ucwords(strtr($word, '_-', '  '))));
+        return $this->str->camel($path);
     }
 
     /**
