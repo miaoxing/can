@@ -1,6 +1,6 @@
 <?php $view->layout() ?>
 
-<?= $block('css') ?>
+<?= $block->css() ?>
 <link rel="stylesheet" href="<?= $asset('plugins/can/css/admin/permissions.css') ?>"/>
 <?= $block->end() ?>
 
@@ -57,7 +57,7 @@
 
 <?php require $view->getFile('can:admin/permissions/picker.php') ?>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require([
     'plugins/can/js/admin/permissions',
