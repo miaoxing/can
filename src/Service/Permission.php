@@ -47,6 +47,12 @@ class Permission extends \Miaoxing\Plugin\BaseModel
         $config = $this->plugin->getConfig();
         $controllerMap = $config['app']['controllerMap'];
 
+        // 附加当前应用的控制器
+        $plugin = $this->plugin->getById(wei()->app->getNamespace());
+        if ($plugin) {
+            $controllerMap += $plugin->getControllerMap();
+        }
+
         foreach ($controllerMap as $name => $class) {
             // 2.1 跳过未安装的插件
             $pluginId = $this->plugin->getPluginIdByClass($class);
