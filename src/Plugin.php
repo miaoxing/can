@@ -95,7 +95,7 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
         $js['roleDefaultValue'] = $roleDefaultValue;
     }
 
-    public function onBeforeAdminAdminsSave($user, $req)
+    public function onAfterAdminAdminsSave($user, $req)
     {
         wei()->role->assign($user, (array) $req['roleIds']);
     }
