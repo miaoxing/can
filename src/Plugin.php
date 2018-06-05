@@ -70,4 +70,31 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
     {
         return wei()->can->can($permissionId, $user);
     }
+
+    public function onBeforeAdminAdminsEdit(&$js, $user)
+    {
+        $roleOptions = [];
+        $roles = wei()->role()->curApp()->findAll();
+        foreach ($roles as $role) {
+            $roleOptions[] = [
+                'label' => $role['name'],
+                'value' => $role['id']
+            ];
+        }
+        $js['roleOptions'] = $roleOptions;
+
+        $roleDefaultValue = [];
+        $roleIds = wei()->can->getUserRoles($user)->getAll('roleId');
+        foreach ($roleOptions as $option) {
+            if (in_array($option['value'], $roleIds)) {
+                $roleDefaultValue[] = $option;
+            }
+        }
+        $js['roleDefaultValue'] = $roleDefaultValue;
+    }
+
+    public function onBeforeAdminAdminsSave($user, $req)
+    {
+        wei()->role->assign($user, (array) $req['roleIds']);
+    }
 }
