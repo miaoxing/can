@@ -73,6 +73,8 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
 
     public function onBeforeAdminAdminsEdit(&$js, $user)
     {
+        $js['isInstalledCan'] = true;
+
         $roleOptions = [];
         $roles = wei()->role()->curApp()->findAll();
         foreach ($roles as $role) {
