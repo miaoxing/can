@@ -25,7 +25,7 @@ class Can extends \Miaoxing\Plugin\BaseService
      *
      * @var string
      */
-    protected $permissionCacheKey = 'permissionIdsV9:';
+    protected $permissionCacheKey = 'permissionIdsV10:';
 
     /**
      * 判断用户是否能执行某项权限(Permission)
@@ -110,7 +110,8 @@ class Can extends \Miaoxing\Plugin\BaseService
      */
     public function getPermissionIds(User $user)
     {
-        return wei()->tagCache('can')->get($this->permissionCacheKey . $user['id'], 864000, function () use ($user) {
+        $key = $this->app->getNamespace() . ':' . $this->permissionCacheKey . $user['id'];
+        return wei()->tagCache('can')->get($key, 864000, function () use ($user) {
             $permissionIds = [];
 
             // 获取用户关联角色的权限
