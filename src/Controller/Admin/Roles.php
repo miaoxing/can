@@ -68,6 +68,7 @@ class Roles extends \Miaoxing\Plugin\BaseController
 
         // 更新拥有权限
         if ($req['permissionIds']) {
+            $req['permissionIds'] = $this->filterPermissionIds($req['permissionIds']);
             $permissions = [];
             $rolePermissions = $role->getRolePermissions();
             foreach ((array) $req['permissionIds'] as $permissionId) {
@@ -79,6 +80,38 @@ class Roles extends \Miaoxing\Plugin\BaseController
         }
 
         return $this->suc();
+    }
+
+    protected function filterPermissionIds($permissionIds)
+    {
+        $permissionIds = array_flip($permissionIds);
+        foreach ($permissionIds as $permissionId => $key) {
+            // admin/users/new,admin/users/create
+            $actions = explode(',', $permissionId);
+            foreach ($actions as $action) {
+                // admin/users/index
+                $parts = explode('/', $action);
+
+                // 忽略根节点
+                if (count($parts) === 1) {
+                    continue;
+                }
+
+                // 逐级检查是否已经存在
+                $path = '';
+                foreach ($parts as $item) {
+                    $path .= $path ? ('/' . $item) : $item;
+                    if ($path !== $permissionId && isset($permissionIds[$path])) {
+                        unset($permissionIds[$permissionId]);
+                        continue;
+                    }
+                }
+            }
+        }
+
+        $permissionIds = array_flip($permissionIds);
+
+        return $permissionIds;
     }
 
     public function destroyAction($req)

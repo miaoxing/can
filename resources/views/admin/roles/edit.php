@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div class="permission-form-groups">
+      <div class="js-permission-form-groups permission-form-groups">
         <div class="col-lg-offset-2 bigger-110">
           &nbsp; <i class="fa fa-spinner fa-spin"></i> 权限加载中,请稍等...
         </div>
@@ -60,14 +60,61 @@
 <?= $block->js() ?>
 <script>
   require([
-    'plugins/can/js/admin/permissions',
+    'template',
     'form', 'ueditor', 'jquery-deparam', 'dataTable', 'validator'
-  ], function (permissions) {
+  ], function (template) {
     var permissionIds = <?= json_encode($permissionIds) ?>;
 
-    permissions.picker({
-      $el: $('.permission-form-groups'),
-      permissionIds: permissionIds
+    // 渲染权限表单控件
+    $.getJSON($.url('admin/permissions/all.json'), function (ret) {
+      if (ret.code !== 1) {
+        $.msg(ret);
+        return;
+      }
+
+      ret.permissionIds = permissionIds;
+      $('.js-permission-form-groups').html(template.render('permissionPickerTpl', ret));
+
+      // 更改控制器,更新所有操作为一样的值
+      $('.js-permission-controller').change(function () {
+        changeController(this);
+        checkNamespace();
+      });
+
+      // 更改命名空间,更新所有控制器和操作为一样的值
+      $('.js-permission-namespace').change(function () {
+        changeNamespace(this);
+      });
+
+      $('.js-permission-action').change(function () {
+        var checked = $(this).closest('.permission-actions').find(':checkbox:not(:checked)').length === 0;
+        $(this).closest('li').find('.js-permission-controller').prop('checked', checked);
+
+        checkNamespace();
+      });
+
+      // 为控制器设置选中状态
+      changeController($('.js-permission-controller:checked'));
+      changeNamespace($('.js-permission-namespace:checked'));
+
+      function changeNamespace(checkbox) {
+        var checked = $(checkbox).prop('checked');
+        $(checkbox).closest('.js-permission-list')
+          .find('.js-permission-controller, .js-permission-action')
+          .prop('checked', checked);
+      }
+
+      function changeController(checkbox) {
+        var checked = $(checkbox).prop('checked');
+        $(checkbox).closest('li')
+          .find('.js-permission-action')
+          .prop('checked', checked);
+      }
+
+      function checkNamespace() {
+        var checked = $('.js-permission-controller:not(:checked)').length === 0;
+        $('.js-permission-namespace').prop('checked', checked);
+      }
     });
 
     $('.js-role-form')
