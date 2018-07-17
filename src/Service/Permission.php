@@ -77,7 +77,7 @@ class Permission extends \Miaoxing\Plugin\BaseModel
             if (!isset($controllers[$controller])) {
                 $controllers[$controller] = [
                     'value' => $controller,
-                    'name' => $defaultProperties['controllerName'] ?: '未命名控制器',
+                    'name' => $this->getControllerName($defaultProperties),
                     'actions' => $permissions,
                 ];
             } else {
@@ -92,6 +92,19 @@ class Permission extends \Miaoxing\Plugin\BaseModel
         }
 
         return $actions;
+    }
+
+    protected function getControllerName($properties)
+    {
+        if (isset($properties['controllerPermissionName'])) {
+            return $properties['controllerPermissionName'];
+        }
+
+        if (isset($properties['controllerName'])) {
+            return $properties['controllerName'];
+        }
+
+        return '未命名控制器';
     }
 
     /**
