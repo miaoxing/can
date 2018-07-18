@@ -96,6 +96,8 @@ class Permission extends \Miaoxing\Plugin\BaseModel
             $actions[$namespace] = $configs;
         }
 
+        wei()->event->trigger('afterGetPagePermissions', [&$actions]);
+
         return $actions;
     }
 
