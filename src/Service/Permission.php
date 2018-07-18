@@ -67,12 +67,17 @@ class Permission extends \Miaoxing\Plugin\BaseModel
                 continue;
             }
 
-            // 2.3 在action前面补齐控制器,使之成为完整格式
+            // 2.3 跳过不展示出来的权限功能
+            if (isset($defaultProperties['hidePermission']) && $defaultProperties['hidePermission']) {
+                continue;
+            }
+
+            // 2.4 在action前面补齐控制器,使之成为完整格式
             $classInfo = $this->getClassInfo($name);
             $controller = $classInfo['controller'];
             $permissions = $this->fillController($defaultProperties['actionPermissions'], $controller);
 
-            // 2.4 使用控制器做键名,合并相同的控制器
+            // 2.5 使用控制器做键名,合并相同的控制器
             $controllers = &$actions[$classInfo['namespace']]['controllers'];
             if (!isset($controllers[$controller])) {
                 $controllers[$controller] = [
