@@ -55,7 +55,7 @@
 </div><!-- /.col -->
 <!-- /.row -->
 
-<?php require $view->getFile('can:admin/permissions/picker.php') ?>
+<?php require $view->getFile('@can/admin/permissions/picker.php') ?>
 
 <?= $block->js() ?>
 <script>
