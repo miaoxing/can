@@ -12,7 +12,7 @@
 <!-- /.page-header -->
 
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12">
     <!-- PAGE CONTENT BEGINS -->
     <form class="js-role-form form-horizontal" method="post" role="form">
 
@@ -28,7 +28,7 @@
       </div>
 
       <div class="js-permission-form-groups permission-form-groups">
-        <div class="col-lg-offset-2 bigger-110">
+        <div class="offset-lg-2 bigger-110">
           &nbsp; <i class="fa fa-spinner fa-spin"></i> 权限加载中,请稍等...
         </div>
       </div>
@@ -37,7 +37,7 @@
       <input type="hidden" name="_method" value="<?= $role->getHttpMethod() ?>">
 
       <div class="clearfix form-actions form-group">
-        <div class="col-lg-offset-2">
+        <div class="offset-lg-2">
           <button class="btn btn-primary" type="submit">
             <i class="fa fa-check bigger-110"></i>
             提交
