@@ -61,7 +61,7 @@
 <script>
   require([
     'template',
-    'form', 'ueditor', 'jquery-deparam', 'dataTable', 'validator'
+    'form', 'ueditor', 'jquery-deparam', 'plugins/admin/js/data-table', 'validator'
   ], function (template) {
     var permissionIds = <?= json_encode($permissionIds) ?>;
 
