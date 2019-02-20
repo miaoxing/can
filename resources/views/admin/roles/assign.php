@@ -63,7 +63,7 @@
 
 <?= $block->js() ?>
 <script>
-  require(['form', 'ueditor', 'jquery-deparam', 'plugins/admin/js/data-table', 'plugins/app/js/validation'], function (form) {
+  require(['form', 'ueditor', 'jquery-unparam', 'plugins/admin/js/data-table', 'plugins/app/js/validation'], function (form) {
     form.toOptions(
       $('#roles'),
       <?= json_encode($roles->toArray()) ?>,

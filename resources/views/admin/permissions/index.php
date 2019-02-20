@@ -46,7 +46,7 @@
 
 <?= $block->js() ?>
 <script>
-  require(['plugins/admin/js/data-table', 'jquery-deparam', 'form'], function () {
+  require(['plugins/admin/js/data-table', 'jquery-unparam', 'form'], function () {
     var recordTable = $('#record-table').dataTable({
       ajax: {
         url: $.queryUrl('admin/permissions.json')
