@@ -60,7 +60,7 @@
 <?= $block->js() ?>
 <script>
   require([
-    plugins/app/libs/artTemplate/template.min,
+    'plugins/app/libs/artTemplate/template.min',
     'form', 'ueditor', 'plugins/admin/js/data-table', 'plugins/app/js/validation'
   ], function (template) {
     var permissionIds = <?= json_encode($permissionIds) ?>;
