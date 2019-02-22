@@ -65,7 +65,7 @@
 
 <?= $block->js() ?>
 <script>
-  require(['form', 'ueditor', 'plugins/admin/js/data-table', 'plugins/app/js/validation'], function () {
+  require(['plugins/admin/js/form', 'ueditor', 'plugins/admin/js/data-table', 'plugins/app/js/validation'], function () {
     $('#permission-form')
       .loadJSON(<?= $permission->toJson() ?>)
       .loadParams()
