@@ -2,7 +2,7 @@
 
 <!-- /.page-header -->
 <div class="page-header">
-  <a class="btn pull-right btn-success" href="<?= $url('admin/permissions/new') ?>">添加权限</a>
+  <a class="btn float-right btn-success" href="<?= $url('admin/permissions/new') ?>">添加权限</a>
 
   <h1>
     权限管理

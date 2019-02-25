@@ -2,7 +2,7 @@
 
 <!-- /.page-header -->
 <div class="page-header">
-  <a class="btn pull-right btn-success" href="<?= $url('admin/roles/new') ?>">添加角色</a>
+  <a class="btn float-right btn-success" href="<?= $url('admin/roles/new') ?>">添加角色</a>
 
   <h1>
     角色管理
