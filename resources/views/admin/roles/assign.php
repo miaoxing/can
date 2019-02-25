@@ -22,7 +22,7 @@
         </label>
 
         <div class="col-lg-4">
-          <p class="form-control-static"><?= $e($user->getNickName()) ?></p>
+          <p class="form-control-plaintext"><?= $e($user->getNickName()) ?></p>
         </div>
       </div>
 
