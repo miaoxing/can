@@ -6,7 +6,7 @@
 
     <div class="col-lg-8 js-permission-list">
       <div class="permission-namespace-checkbox checkbox-inline">
-        <label>
+        <label class="mb-0">
           <input type="checkbox" class="js-permission-namespace" name="permissionIds[]" value="admin" <%= permissionIds.indexOf('admin') != -1 ? 'checked' : '' %>>
           <strong>全部</strong>
         </label>
@@ -15,7 +15,7 @@
         <% $.each(pages.admin.controllers, function (j, controller) { %>
         <li>
           <div class="checkbox-inline permission-controller">
-            <label>
+            <label class="mb-0">
               <input type="checkbox" class="js-permission-controller" name="permissionIds[]" value="<%= controller.value %>" <%= permissionIds.indexOf(controller.value) != -1 ? 'checked' : '' %>>
               <strong><%= controller.name %></strong>
             </label>
@@ -23,7 +23,7 @@
           <div class="permission-actions">
             <% for (var action in controller.actions) { %>
             <div class="checkbox-inline permission-action-checkbox">
-              <label>
+              <label class="mb-0">
                 <input type="checkbox" class="js-permission-action" name="permissionIds[]" value="<%= action %>" <%= permissionIds.indexOf(action.split(',')[0]) != -1 ? 'checked' : '' %>>
                 <%= controller.actions[action] %>
               </label>
