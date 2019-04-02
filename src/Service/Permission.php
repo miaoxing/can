@@ -53,31 +53,38 @@ class Permission extends \Miaoxing\Plugin\BaseModel
             $controllerMap += $plugin->getControllerMap();
         }
 
+        // 2. 从控制器类中获取权限
         foreach ($controllerMap as $name => $class) {
-            // 2.1 跳过未安装的插件
+            // 忽略缓存未更新导致类不存在
+            if (!class_exists($class)) {
+                $this->logger->info('Controller class not found', ['class' => $class]);
+                continue;
+            }
+
+            // 跳过未安装的插件
             $pluginId = $this->plugin->getPluginIdByClass($class);
             if (!$this->plugin->isInstalled($pluginId)) {
                 continue;
             }
 
-            // 2.2 跳过未配置权限的控制器
+            // 跳过未配置权限的控制器
             $class = new ReflectionClass($class);
             $defaultProperties = $class->getDefaultProperties();
             if (!($defaultProperties['actionPermissions'])) {
                 continue;
             }
 
-            // 2.3 跳过不展示出来的权限功能
+            // 跳过不展示出来的权限功能
             if (isset($defaultProperties['hidePermission']) && $defaultProperties['hidePermission']) {
                 continue;
             }
 
-            // 2.4 在action前面补齐控制器,使之成为完整格式
+            // 在action前面补齐控制器,使之成为完整格式
             $classInfo = $this->getClassInfo($name);
             $controller = $classInfo['controller'];
             $permissions = $this->fillController($defaultProperties['actionPermissions'], $controller);
 
-            // 2.5 使用控制器做键名,合并相同的控制器
+            // 使用控制器做键名,合并相同的控制器
             $controllers = &$actions[$classInfo['namespace']]['controllers'];
             if (!isset($controllers[$controller])) {
                 $controllers[$controller] = [
